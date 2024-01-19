@@ -20,25 +20,10 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
   List<String> favoriteItems = [];
 
   List<IconData> iconData = [
-    Icons.favorite_border,
     Icons.download,
     Icons.wallpaper,
   ];
 
-  void toggleFavorite() {
-    setState(() {
-      isFavorite = !isFavorite;
-      if (isFavorite) {
-        favoriteItems.add(widget.fullUrl);
-      } else {
-        favoriteItems.remove(widget.fullUrl);
-      }
-    });
-    ImageHelper.showSnackbar(
-      context,
-      isFavorite ? 'Added to favorites' : 'Removed from favorites',
-    );
-  }
 
   void handleDownloadWallpaper(void showSnackbar) {
     ImageHelper.downloadWallpaper(context, widget.fullUrl);
@@ -107,11 +92,9 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                           padding: EdgeInsets.all(8.0),
                           child: GestureDetector(
                             onTap: () {
-                              if (index == 0) {
-                                toggleFavorite();
-                              } else if (index == 1) {
+                               if (index == 0) {
                                 handleDownloadWallpaper(ImageHelper.showSnackbar(context,'Wallpaper Downloading..'));
-                              } else if (index == 2) {
+                              } else if (index == 1) {
                                 handleSetWallpaper(ImageHelper.showSnackbar(context, 'Setting Wallpaper..', duration: Duration(seconds: 8)));
                               }
                             },
@@ -133,9 +116,7 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                                 child: Icon(
                                   iconData[index],
                                   size: 28,
-                                  color: index == 0 && isFavorite
-                                      ? colorAppIconButton
-                                      : colorAppWhite,
+                                  color: colorAppWhite,
                                 ),
                               ),
                             ),

@@ -15,9 +15,14 @@ class FeatureImageScreen extends StatefulWidget {
 }
 
 class _FeatureImageScreenState extends State<FeatureImageScreen> {
+  final ScrollController scrollController = ScrollController();
   @override
   void initState() {
     super.initState();
+    // scrollController.addListener(() {
+    //   Provider.of<PhotoSearchProvider>(context, listen: false)
+    //       .scrollListener(scrollController);
+    // });
     Provider.of<PhotoSearchProvider>(context, listen: false).searchPhotos(widget.query);
   }
 
@@ -25,7 +30,6 @@ class _FeatureImageScreenState extends State<FeatureImageScreen> {
   Widget build(BuildContext context) {
     return Consumer<PhotoSearchProvider>(
       builder: (BuildContext context, provider, _) {
-        print('aaaaaa ${provider.photos!.length}');
         if (provider.dataLoading == true) {
           return const Center(child: CircularProgressIndicator());
         } else {
