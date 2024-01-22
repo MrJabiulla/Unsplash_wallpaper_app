@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wallpaper_app/constants/color_constant.dart';
+import 'package:wallpaper_app/provider/populer_wallpaper_provider.dart';
 import 'package:wallpaper_app/provider/product_provider.dart';
 import 'package:wallpaper_app/provider/searchProvider.dart';
 import 'package:wallpaper_app/screen/bottom_nevigation.dart';
@@ -21,7 +22,8 @@ void main() {
           providers: [
             ChangeNotifierProvider<ProductProvider>(create: (context) => ProductProvider()),
             ChangeNotifierProvider(create: (context) => PhotoSearchProvider()),
-            ChangeNotifierProvider(create: (context) => ProductProvider(),)
+            ChangeNotifierProvider(create: (context) => ProductProvider(),),
+            ChangeNotifierProvider<PopulerWallpaperProvider>(create: (_) => PopulerWallpaperProvider(),),
 
           ],
           child: const MyApp()

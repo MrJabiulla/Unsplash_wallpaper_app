@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/constants/color_constant.dart';
 import 'package:wallpaper_app/screen/searchScreen.dart';
+import 'categories_tab.dart';
 import 'homepage_screen.dart';
 import '../provider/product_provider.dart';
 import 'package:provider/provider.dart';
@@ -16,8 +17,8 @@ class BottomNavigationScreen extends StatefulWidget {
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   final List<Widget> _screens = [
     HomepageScreen(),
+    CategoriesTab(),
     PhotoSearch(),
-    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -64,7 +65,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                     });
                   },
                   child: Icon(
-                    Icons.search,size: _selectedIndex ==1 ? 35 : 30,
+                    Icons.category,size: _selectedIndex ==1 ? 35 : 30,
                     color: _selectedIndex == 1? colorAppIconButton : colorAppTextGrey,
                   )
               ),
@@ -76,7 +77,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                     });
                   },
                   child: Icon(
-                    Icons.person,size: _selectedIndex ==2 ? 35 : 30,
+                    Icons.search,size: _selectedIndex ==2 ? 35 : 30,
                     color: _selectedIndex == 2? colorAppIconButton : colorAppTextGrey,
                   )
               ),
@@ -86,37 +87,3 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     );
   }
 }
-
-
-
-class FavouriteScreen extends StatelessWidget {
-  const FavouriteScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          child: Text('Home'),
-        ),
-      ),
-    );
-  }
-}
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.green,
-      body: Center(
-        child: Container(
-          child: Text('Profile'),
-        ),
-      ),
-    );
-  }
-}
-

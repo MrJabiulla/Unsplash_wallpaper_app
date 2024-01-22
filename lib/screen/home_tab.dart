@@ -9,7 +9,7 @@ import '../allwallpepar.dart';
 import 'package:provider/provider.dart';
 import '../provider/product_provider.dart';
 import '../provider/searchProvider.dart';
-import '../see_morewallpaper.dart';
+import '../populer_wallpaper.dart';
 import '../widgets_common/feature_imagewidgets.dart';
 import 'full_photo.dart';
 
@@ -95,7 +95,7 @@ class _HomeTab_ScreenState extends State<HomeTab_Screen> {
                         onTap: (){
                           Navigator.push(context,MaterialPageRoute(builder: (context) => FeatureImageScreen(query: featuredTitle[index],)),);
                           Provider.of<PhotoSearchProvider>(context, listen: false)
-                              .searchPhotos(featuredTitle[index]);
+                              .fetchSearchPhotos(featuredTitle[index]);
                         },
                         child: Stack(
                           children: [
@@ -147,7 +147,7 @@ class _HomeTab_ScreenState extends State<HomeTab_Screen> {
                 ),
                 GestureDetector(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> SeeMoreWallpaper()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> PopulerWallpaper()));
                   },
                   child: Container(
                     height: 19,

@@ -50,7 +50,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
                 onTap: (){
                   Navigator.push(context,MaterialPageRoute(builder: (context) => FeatureImageScreen(query: categoriesItem[index],)),);
                   Provider.of<PhotoSearchProvider>(context, listen: false)
-                      .searchPhotos('${categoriesItem[index]}');
+                      .fetchSearchPhotos('${categoriesItem[index]}');
                 },
                 child: Stack(
                   children: [

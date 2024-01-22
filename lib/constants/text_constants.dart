@@ -7,6 +7,7 @@ const String TextEnterPassword = 'Password';
 const String TextEnterMessage = 'Enter your message';
 const String TextHome = 'HOME';
 const String TextCategories = 'CATEGORIES';
+const String TextPopuler = 'POPULAR';
 
 const String TextSignUp = 'SIGN UP';
 const String TextSignIn = 'SIGN IN';

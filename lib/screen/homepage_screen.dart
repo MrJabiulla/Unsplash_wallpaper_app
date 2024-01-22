@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wallpaper_app/constants/color_constant.dart';
 import '../constants/text_constants.dart';
+import '../populer_wallpaper.dart';
 import '../provider/product_provider.dart';
 import 'package:provider/provider.dart';
 import 'categories_tab.dart';
@@ -39,14 +40,14 @@ class _HomepageScreenState extends State<HomepageScreen> {
                 indicatorSize: TabBarIndicatorSize.tab,
                 tabs: [
                   Tab(text: TextHome),
-                  Tab(text: TextCategories),
+                  Tab(text: TextPopuler),
                 ],
               ),
               Expanded(
                 child: TabBarView(
                   children: [
                     HomeTab_Screen(),
-                    CategoriesTab(),
+                    PopulerWallpaper(),
                   ],
                 ),
               ),

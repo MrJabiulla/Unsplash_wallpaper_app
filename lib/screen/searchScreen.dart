@@ -16,7 +16,7 @@ class _PhotoSearchState extends State<PhotoSearch> {
 
   @override
   void initState() {
-    Provider.of<PhotoSearchProvider>(context, listen: false).searchPhotos(searchController.text.toLowerCase());
+    Provider.of<PhotoSearchProvider>(context, listen: false).fetchSearchPhotos(searchController.text.toLowerCase());
     super.initState();
   }
 
@@ -52,7 +52,7 @@ class _PhotoSearchState extends State<PhotoSearch> {
                         icon: const Icon(Icons.search),
                         color: Colors.white,
                         onPressed: () {
-                          photoSearchProvider.searchPhotos(searchController.text);
+                          photoSearchProvider.fetchSearchPhotos(searchController.text);
                         },
                       ),
                       border: OutlineInputBorder(

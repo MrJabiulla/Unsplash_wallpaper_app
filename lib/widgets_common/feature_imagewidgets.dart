@@ -16,14 +16,16 @@ class FeatureImageScreen extends StatefulWidget {
 
 class _FeatureImageScreenState extends State<FeatureImageScreen> {
   final ScrollController scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
-    // scrollController.addListener(() {
-    //   Provider.of<PhotoSearchProvider>(context, listen: false)
-    //       .scrollListener(scrollController);
-    // });
-    Provider.of<PhotoSearchProvider>(context, listen: false).searchPhotos(widget.query);
+    scrollController.addListener(() {
+      final currentQuery = widget.query;
+      Provider.of<PhotoSearchProvider>(context, listen: false)
+          .scrollListener(scrollController,currentQuery);
+    });
+    Provider.of<PhotoSearchProvider>(context, listen: false).fetchSearchPhotos(widget.query);
   }
 
   @override
