@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:wallpaper_app/constants/color_constant.dart';
-import 'package:wallpaper_app/constants/url_constants.dart';
 import 'package:wallpaper_app/provider/product_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:wallpaper_app/screen/full_photo.dart';
 
 class AllWallpaper extends StatefulWidget {

@@ -26,5 +26,5 @@ const String TextTheme = 'Theme Mode';
 const String TextContact = 'Contact Us';
 
 const String TextTopWallpaper = 'Top Wallpaper';
-const String TextSeeMore = 'See More';
+const String TextSeeMore = 'Popular';
 const String TextFeatured = 'Featured';

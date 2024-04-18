@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../constants/url_constants.dart';
@@ -7,7 +8,7 @@ import '../model/product_model.dart';
 
 class ProductProvider extends ChangeNotifier {
   final String baseUrl = 'https://api.unsplash.com/photos/';
-  final String clientId = 'e8gVc5wKIVcSIihSoURU8f0t6vlbG_sNTAH-1Ypr08k99';
+  final String clientId = 'e8gVc5wKIVcSIihSoURU8f0t6vlbG_sNTAH-1Ypr08k';
   final int perPage = 30;
 
   List<PhotoDetails>? _productData;
@@ -17,7 +18,7 @@ class ProductProvider extends ChangeNotifier {
   bool hasMoreData = true;
 
   Future<void> fetchProductData(ScrollController scrollController) async {
-    print("fetchProductData");
+    log("fetchProductData");
     if (dataLoading || !hasMoreData) return;
 
     String photoUrl = '$baseUrl?client_id=$clientId&per_page=$perPage&page=$currentPage';

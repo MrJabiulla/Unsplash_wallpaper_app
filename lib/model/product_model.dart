@@ -28,7 +28,7 @@ class PhotoDetails {
     return PhotoDetails(
       altDescription: json['alt_description'] ,
       description: json['description'],
-      fullUrl: json['urls']['full'],
+      fullUrl: json['urls']['regular'],
       likes: json['likes'],
       thumUrl: json['urls']['thumb'],
       username: json['user']['name'],

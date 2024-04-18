@@ -1,26 +1,22 @@
-import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wallpaper_app/constants/color_constant.dart';
 import 'package:wallpaper_app/constants/image_constants.dart';
 import 'package:wallpaper_app/constants/text_constants.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../allwallpepar.dart';
 import 'package:provider/provider.dart';
 import '../provider/product_provider.dart';
-import '../provider/searchProvider.dart';
-import '../populer_wallpaper.dart';
+import '../provider/search_provider.dart';
 import '../widgets_common/feature_imagewidgets.dart';
 import 'full_photo.dart';
 
-class HomeTab_Screen extends StatefulWidget {
-  HomeTab_Screen({Key? key}) : super(key: key);
+class HomeTabScreen extends StatefulWidget {
+  HomeTabScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeTab_Screen> createState() => _HomeTab_ScreenState();
+  State<HomeTabScreen> createState() => _HomeTabScreenState();
 }
 
-class _HomeTab_ScreenState extends State<HomeTab_Screen> {
+class _HomeTabScreenState extends State<HomeTabScreen> {
   final ScrollController scrollController = ScrollController();
   List<String> featuredTitle  =[
     'Arts',
@@ -93,7 +89,7 @@ class _HomeTab_ScreenState extends State<HomeTab_Screen> {
                       ),
                       child: GestureDetector(
                         onTap: (){
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => FeatureImageScreen(query: featuredTitle[index],)),);
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => FeatureImageScreen(query: featuredTitle[index], image: featureImage[index],)),);
                           Provider.of<PhotoSearchProvider>(context, listen: false)
                               .fetchSearchPhotos(featuredTitle[index]);
                         },
@@ -145,36 +141,16 @@ class _HomeTab_ScreenState extends State<HomeTab_Screen> {
                       fontWeight: FontWeight.bold,
                       color: colorAppTextWhite),
                 ),
-                GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> PopulerWallpaper()));
-                  },
-                  child: Container(
-                    height: 19,
-                    width: 70,
-                    alignment: AlignmentDirectional.center,
-                    decoration: BoxDecoration(
-                      color: colorAppIconButton,
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Text(
-                      TextSeeMore,
-                      style: GoogleFonts.poppins(
-                          fontSize: 12, color: colorAppTextWhite),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           allWallpapers(),
         ],
       ),
     );
   }
+
   Widget allWallpapers(){
     return Consumer<ProductProvider>(
       builder: (BuildContext context, provider, _) {
@@ -188,61 +164,64 @@ class _HomeTab_ScreenState extends State<HomeTab_Screen> {
             ),
           );
         } else {
-          return GridView.builder(
-            //controller: scrollController,
-            itemCount: provider.productData!.length + 1,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.67,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: GridView.builder(
+              //controller: scrollController,
+              itemCount: provider.productData!.length + 1,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.67,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemBuilder: (BuildContext context, index) {
+                if (index < provider.productData!.length) {
+                  print("Index ${index}");
+                  final data = provider.productData![index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullPhotoScreen(fullUrl: data.fullUrl.toString()),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 300,
+                      width: 220,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white.withOpacity(0.1),
+                            spreadRadius: 0.1,
+                            blurRadius: 20,
+                          )
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          '${data.thumUrl}',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  );
+                } else if (provider.hasMoreData) {
+                  print("hasMoreData");
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  // End of data
+                  return SizedBox.shrink();
+                }
+              },
             ),
-            itemBuilder: (BuildContext context, index) {
-              if (index < provider.productData!.length) {
-                print("Index ${index}");
-                final data = provider.productData![index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FullPhotoScreen(fullUrl: data.fullUrl.toString()),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    height: 300,
-                    width: 220,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.white.withOpacity(0.1),
-                          spreadRadius: 0.1,
-                          blurRadius: 20,
-                        )
-                      ],
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        '${data.thumUrl}',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                );
-              } else if (provider.hasMoreData) {
-                print("hasMoreData");
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                // End of data
-                return SizedBox.shrink();
-              }
-            },
           );
         }
       },

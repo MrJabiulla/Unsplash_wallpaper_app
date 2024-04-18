@@ -3,9 +3,6 @@ import 'package:wallpaper_app/constants/color_constant.dart';
 import 'package:wallpaper_app/screen/searchScreen.dart';
 import 'categories_tab.dart';
 import 'homepage_screen.dart';
-import '../provider/product_provider.dart';
-import 'package:provider/provider.dart';
-
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({Key? key});
@@ -16,8 +13,8 @@ class BottomNavigationScreen extends StatefulWidget {
 
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   final List<Widget> _screens = [
-    HomepageScreen(),
-    CategoriesTab(),
+    const HomepageScreen(),
+    const CategoriesTab(),
     PhotoSearch(),
   ];
 
@@ -38,7 +35,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
       ),
       bottomNavigationBar: Container(
           height: 70,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.black,
           ),
           child: Row(

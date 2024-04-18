@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wallpaper_app/constants/color_constant.dart';
 import '../constants/text_constants.dart';
-import '../populer_wallpaper.dart';
-import '../provider/product_provider.dart';
-import 'package:provider/provider.dart';
-import 'categories_tab.dart';
+import 'populer_wallpaper.dart';
 import 'home_tab.dart';
 
 class HomepageScreen extends StatefulWidget {
@@ -46,7 +43,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
               Expanded(
                 child: TabBarView(
                   children: [
-                    HomeTab_Screen(),
+                    HomeTabScreen(),
                     PopulerWallpaper(),
                   ],
                 ),

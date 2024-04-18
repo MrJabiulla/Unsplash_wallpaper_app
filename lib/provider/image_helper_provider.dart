@@ -7,16 +7,16 @@ import 'package:path_provider/path_provider.dart';
 import 'package:wallpaper_app/constants/color_constant.dart';
 
 class ImageHelper {
-  static Future<void> setWallpaper(BuildContext context, String imageUrl) async {
-    int location = WallpaperManager.HOME_SCREEN;
-    var file = await DefaultCacheManager().getSingleFile(imageUrl);
-    final bool result =
-    await WallpaperManager.setWallpaperFromFile(file.path, location);
-    _showSnackbar(
-      context,
-      'Wallpaper ${result ? 'set' : 'failed to set'} successfully',
-    );
-  }
+    static Future<void> setWallpaper(BuildContext context, String imageUrl) async {
+      int location = WallpaperManager.HOME_SCREEN;
+      var file = await DefaultCacheManager().getSingleFile(imageUrl);
+      final bool result =
+      await WallpaperManager.setWallpaperFromFile(file.path, location);
+      _showSnackbar(
+        context,
+        'Wallpaper ${result ? 'set' : 'failed to set'} successfully',
+      );
+    }
 
   static Future<void> downloadWallpaper(BuildContext context, String imageUrl) async {
     final response = await http.get(Uri.parse(imageUrl));
@@ -37,7 +37,7 @@ class ImageHelper {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: colorAppIconButton,
-        content: Text(message, style: TextStyle(color: Colors.white)),
+        content: Text(message, style: const TextStyle(color: Colors.white)),
         duration: duration,
       ),
     );
@@ -48,7 +48,7 @@ class ImageHelper {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: colorAppIconButton,
-        content: Text(message, style: TextStyle(color: Colors.white)),
+        content: Text(message, style: const TextStyle(color: Colors.white)),
         duration: duration,
       ),
     );

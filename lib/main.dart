@@ -3,14 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:wallpaper_app/constants/color_constant.dart';
 import 'package:wallpaper_app/provider/populer_wallpaper_provider.dart';
 import 'package:wallpaper_app/provider/product_provider.dart';
-import 'package:wallpaper_app/provider/searchProvider.dart';
-import 'package:wallpaper_app/screen/bottom_nevigation.dart';
+import 'package:wallpaper_app/provider/search_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:wallpaper_app/screen/home_tab.dart';
-import 'package:wallpaper_app/screen/homepage_screen.dart';
 import 'package:wallpaper_app/screen/splash_screen.dart';
-
-import 'allwallpepar.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(

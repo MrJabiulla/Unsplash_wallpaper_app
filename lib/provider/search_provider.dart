@@ -1,15 +1,13 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import '../constants/url_constants.dart';
 import '../model/product_model.dart';
 import 'package:flutter/foundation.dart';
 
 
 class PhotoSearchProvider extends ChangeNotifier {
   final String baseUrl = 'https://api.unsplash.com/search/photos';
-  final String clientId = 'e8gVc5wKIVcSIihSoURU8f0t6vlbG_sNTAH-1Ypr08k99';
+  final String clientId = 'e8gVc5wKIVcSIihSoURU8f0t6vlbG_sNTAH-1Ypr08k';
   final int perPage = 30;
 
   List<PhotoDetails> _photos = [];

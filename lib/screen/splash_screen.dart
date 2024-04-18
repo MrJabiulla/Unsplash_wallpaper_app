@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wallpaper_app/constants/color_constant.dart';
 import 'package:wallpaper_app/constants/image_constants.dart';
-
 import 'bottom_nevigation.dart';
-import 'homepage_screen.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,8 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
 
-    Future.delayed(Duration(milliseconds: 1000), (){
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> BottomNavigationScreen()), (route) => false);
+    Future.delayed(const Duration(milliseconds: 1000), (){
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> const BottomNavigationScreen()), (route) => false);
     });
     return Scaffold(
       body: Column(

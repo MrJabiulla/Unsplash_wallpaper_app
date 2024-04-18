@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:wallpaper_app/constants/color_constant.dart';
 import 'package:wallpaper_app/provider/product_provider.dart';
 import '../model/product_model.dart';
-import '../provider/full_screenwidgets_provider.dart';
+import '../provider/image_helper_provider.dart';
 
 class FullPhotoScreen extends StatefulWidget {
   final String fullUrl;
@@ -42,7 +42,7 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
             return const Center(child: CircularProgressIndicator());
           } else if (provider.productData == null ||
               provider.productData!.isEmpty) {
-            return Center(child: Text('No available Data'));
+            return const Center(child: Text('No available Data'));
           } else {
             return Stack(
               children: [
@@ -59,6 +59,7 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      ///back button
                       GestureDetector(
                         onTap: () {
                           Navigator.pop(context);
@@ -70,16 +71,18 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                               color: Colors.black.withOpacity(0.4),
                               borderRadius: BorderRadius.circular(32)
                             ),
-                            child: Icon(Icons.arrow_back, color: colorAppWhite)),
+                            child: const Icon(Icons.arrow_back, color: colorAppWhite)),
                       ),
+                      ///information
                       GestureDetector(
                           onTap: (){
                             _showDialog(context, widget.fullUrl, provider.productData!);
                           },
-                          child: Icon(Icons.info, color: colorAppTextGrey)),
+                          child: const Icon(Icons.info, color: colorAppTextGrey)),
                     ],
                   ),
                 ),
+                ///download and set wallpaper
                 Positioned(
                   left: 40,
                   right: 40,
@@ -95,7 +98,7 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                                if (index == 0) {
                                 handleDownloadWallpaper(ImageHelper.showSnackbar(context,'Wallpaper Downloading..'));
                               } else if (index == 1) {
-                                handleSetWallpaper(ImageHelper.showSnackbar(context, 'Setting Wallpaper..', duration: Duration(seconds: 8)));
+                                handleSetWallpaper(ImageHelper.showSnackbar(context, 'Setting Wallpaper..', duration: const Duration(seconds: 8)));
                               }
                             },
                             child: Container(
@@ -141,9 +144,9 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: Colors.black.withOpacity(0.4),
-          title: Center(child: Text('Photo Information')),
-          titleTextStyle: TextStyle(color: Colors.white),
-          content: Container(
+          title: const Center(child: Text('Photo Information')),
+          titleTextStyle: const TextStyle(color: Colors.white),
+          content: SizedBox(
             height: 150,
             child: Column(
               children: [
@@ -152,8 +155,7 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Likes : ', style: TextStyle(color: Colors.white),),
-                      Text( '${selectedPhoto.likes}', style: TextStyle(color: Colors.white)),
+                      Text('Likes : ${selectedPhoto.likes}', style: TextStyle(color: Colors.white),),
                     ],
                   ),
                 ),
@@ -162,8 +164,7 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Uploader Name : ', style: TextStyle(color: Colors.white)),
-                      Text( '${selectedPhoto.username}', style: TextStyle(color: Colors.white)),
+                       Text('Uploader Name : ${selectedPhoto.username}', style: TextStyle(color: Colors.white)),
                     ],
                   ),
                 ),
@@ -172,8 +173,7 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Height : ', style: TextStyle(color: Colors.white)),
-                      Text( '${selectedPhoto.height}', style: TextStyle(color: Colors.white)),
+                       Text('Height : ${selectedPhoto.height}', style: TextStyle(color: Colors.white)),
                     ],
                   ),
                 ),
@@ -182,8 +182,7 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Width : ', style: TextStyle(color: Colors.white)),
-                      Text( '${selectedPhoto.width}', style: TextStyle(color: Colors.white)),
+                       Text('Width : ${selectedPhoto.width}', style: TextStyle(color: Colors.white)),
                     ],
                   ),
                 ),
@@ -192,8 +191,8 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Photo Location : ', style: TextStyle(color: Colors.white)),
-                      Text( '${selectedPhoto.location}', style: TextStyle(color: Colors.white)),
+                       Text('Photo Location : ${selectedPhoto.location}', style: TextStyle(color: Colors.white)),
+
                     ],
                   ),
                 ),
@@ -205,7 +204,7 @@ class _FullPhotoScreenState extends State<FullPhotoScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK', style: TextStyle(color: colorAppSubmitButton),),
+              child: const Text('OK', style: TextStyle(color: colorAppSubmitButton),),
             ),
           ],
         );

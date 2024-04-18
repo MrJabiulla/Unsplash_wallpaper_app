@@ -19,12 +19,12 @@ const String imageFeatureNature = 'assets/images/nature.jpg';
 ///-------------Categories Image----------------------------
 
 const String imageCategoriesGames = 'assets/images/games.jpg';
-const String imageCategoriesFilm = 'assets/images/landscap.jpg';
-const String imageCategories3D  = 'assets/images/Technology.jpg';
+const String imageCategoriesFilm = 'assets/images/film.jpg';
+const String imageCategories3D  = 'assets/images/3d.jpg';
 const String imageCategoriesTextures  = 'assets/images/fons-heijnsbroek-abstract-art-EPfBNIKZ0W8-unsplash.jpg';
 const String imageCategoriesTravel  = 'assets/images/landscap.jpg';
 const String imageCategoriesFood  = 'assets/images/foods.jpg';
 const String imageCategoriesHealth  = 'assets/images/health.jpg';
-const String imageCategoriesFasion  = 'assets/images/clothing.jpg';
+const String imageCategoriesFasion  = 'assets/images/fasion.jpg';
 const String imageCategoriesArts  = 'assets/images/art.jpg';
 const String imageCategoriesSports  = 'assets/images/Sports.jpg';
